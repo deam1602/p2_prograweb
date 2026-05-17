@@ -1,0 +1,27 @@
+.calculatorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.shippingForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .shippingForm {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resultsCard {
+  border-left: 5px solid var(--accent);
+  background: #fdf0f0;
+  padding: 1.5rem;
+}

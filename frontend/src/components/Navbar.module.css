@@ -1,0 +1,47 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navLinks a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.navLinks a:hover {
+  color: var(--accent);
+}
+
+.btnQuote {
+  background-color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/*responsividad, oculta el menú en celulares */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none; 
+  }
+}
