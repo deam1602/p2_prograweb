@@ -19,7 +19,7 @@ app.use(cors({
 app.use(express.json());
 
 // Responder explícitamente a las peticiones OPTIONS
-app.options('*', cors());
+//app.options('*', cors());
 
 // Rutas
 app.use('/api/auth', authRoutes);
