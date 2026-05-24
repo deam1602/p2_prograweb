@@ -11,14 +11,25 @@ const contactRoutes = require('./src/routes/contactRoutes');
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
+
+// Responder explícitamente a las peticiones OPTIONS
+app.options('*', cors());
 
 // Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/shipments', shipmentRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/contact', contactRoutes);
+
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'Backend funcionando' });
+});
 
 // Manejo de errores global
 app.use((err, req, res, next) => {
