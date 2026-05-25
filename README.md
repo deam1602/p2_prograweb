@@ -9,54 +9,71 @@ El proyecto está dividido en un backend robusto basado en capas (Node.js/Expres
 ### Backend (Node.js & Express)
 El servidor implementa un patrón de arquitectura limpia dividida en capas independientes para asegurar la escalabilidad, la separación de conceptos y la facilidad de mantenimiento:
 
+## Backend (Node.js + Express)
 
+El backend está organizado siguiendo una arquitectura modular basada en controladores, modelos, rutas y middlewares.
+
+```bash
 backend/
 ├── src/
-│   ├── controllers/      # Lógica de negocio de la aplicación (Manejo de peticiones y respuestas)
+│   ├── controllers/      # Lógica de negocio de la aplicación (manejo de peticiones y respuestas)
 │   │   ├── adminController.js
 │   │   ├── authController.js
 │   │   ├── contactController.js
 │   │   └── shipmentController.js
-│   ├── middleware/       # Interceptores HTTP (Protección de rutas, validación de JWT y roles)
+│   │
+│   ├── middleware/       # Interceptores HTTP (protección de rutas, validación JWT y roles)
 │   │   ├── adminMiddleware.js
 │   │   └── authMiddleware.js
-│   ├── models/           # Definición de esquemas de datos y persistencia con Mongoose
+│   │
+│   ├── models/           # Definición de esquemas de datos con Mongoose
 │   │   ├── ContactMessage.js
 │   │   ├── Shipment.js
 │   │   └── User.js
-│   ├── routes/           # Mapeo de Endpoints y enrutamiento de la API REST
+│   │
+│   ├── routes/           # Definición y mapeo de endpoints REST
 │   │   ├── adminRoutes.js
 │   │   ├── authRoutes.js
 │   │   ├── contactRoutes.js
 │   │   └── shipmentRoutes.js
-│   └── index.js          # Inicialización del servidor, middlewares globales y bootstrap
+│   │
+│   └── index.js          # Inicialización del servidor y middlewares globales
+│
 ├── package-lock.json
 └── package.json
+```
 
+---
 
-Frontend (React & Vite)
-El cliente SPA se estructura de forma modular
+## Frontend (React + Vite)
 
+El frontend está desarrollado como una SPA (Single Page Application) utilizando React y Vite, con una estructura modular orientada a componentes reutilizables.
+
+```bash
 frontend/
 ├── public/               # Recursos estáticos globales (imágenes, iconos, favicon)
 │   ├── favicon.svg
 │   ├── icons.svg
 │   └── skayship.png
+│
 ├── src/
-│   ├── assets/           # Estilos específicos y media local compilable
-│   ├── components/       # Componentes de interfaz reutilizables
-│   ├── context/          # Estados globales de React (Autenticación y Sesión)
-│   ├── pages/            # Vistas raíz vinculadas al enrutador
-│   ├── utils/            # Helpers del sistema y configuración de clientes HTTP
+│   ├── assets/           # Recursos multimedia y estilos compilables
+│   ├── components/       # Componentes reutilizables de interfaz
+│   ├── context/          # Manejo de estados globales y autenticación
+│   ├── pages/            # Vistas principales asociadas al router
+│   ├── utils/            # Helpers y configuración de clientes HTTP
+│   │
 │   ├── App.css
-│   ├── App.jsx           # Enrutamiento principal del cliente
-│   ├── index.css         # Estilos globales y variables de diseño
-│   └── main.jsx          # Punto de entrada y montaje en el DOM real
+│   ├── App.jsx           # Configuración principal de rutas
+│   ├── index.css         # Estilos globales del sistema
+│   └── main.jsx          # Punto de entrada y renderizado en el DOM
+│
 ├── eslint.config.js
 ├── index.html
 ├── package.json
-├── vite.config.js        # Configuración del bundler de Vite
-└── Procfile              # Archivo de procesos para despliegue dinámico en la nube
+├── vite.config.js        # Configuración del bundler Vite
+└── Procfile              # Configuración para despliegue en la nube
+```
 
 2. Decisiones Técnicas Fundamentales
 
@@ -114,3 +131,5 @@ VITE_API_URL=http://localhost:5000
 Inicia el servidor de desarrollo de Vite:
 Bash
 npm run dev
+
+URL APP: https://main.d26qil6a4ydjqi.amplifyapp.com/
