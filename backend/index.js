@@ -39,11 +39,19 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URI)
+const mongooseOptions = {
+    family: 4,                  // Fuerza a Node.js a usar IPv4 
+    serverSelectionTimeoutMS: 5000 // Si en 5 segundos no conecta, aborta en lugar de detenerse 30 segundos
+};
+
+mongoose.connect(process.env.MONGO_URI, mongooseOptions)
     .then(() => {
-        console.log('Conectado a MongoDB');
+        console.log('Conectado a MongoDB exitosamente');
         app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
     })
     .catch((error) => {
-        console.error('Error conectando a MongoDB:', error.message);
+        console.error('Error crítico conectando a MongoDB:', error.message);
+        app.listen(PORT, () => {
+            console.log(`Servidor corriendo en modo de degradación (Sin DB) en puerto ${PORT}`);
+        });
     });
